@@ -1,6 +1,20 @@
-// import { useState } from 'react'
 
 import { useState } from "react";
+
+const ExperienceList = () => {
+	const [experienceItem, setExperienceItem] = useState("<li><h4>Role</h4><p>Company</p><p>Dates</p></li>");
+
+	const addExperience = () => {
+		setExperienceItem([...experienceItem, ""]);
+	};
+
+	return (
+		<div>
+			<button onClick={addExperience}>More space</button>
+		</div>
+	)
+
+}
 
 export default function App() {
 	const [pic, setPic] = useState("/src/assets/profile-image.jpg");
@@ -13,45 +27,55 @@ export default function App() {
 	const [contact, setContact] = useState("Contact")
 
 
+
+
+
+
 	return (
         <div className="main-container">
             <form action="" id="form">
                 <label htmlFor="profile-image">Profile Image: </label>
+                <br />
                 <input type="file" id="profile-image" onChange={(e) => setPic(e.target.value)} />
                 <br />
                 <br />
 
                 <label htmlFor="name">Name: </label>
-                <input type="text" id="name" onChange={(e) => setName(e.target.value)} />
                 <br />
+                <input type="text" id="name" onChange={(e) => setName(e.target.value)} />
                 <br />
 
                 <label htmlFor="title">Title: </label>
-                <input type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
                 <br />
+                <input type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
                 <br />
 
                 <label htmlFor="about">About: </label>
+                <br />
                 <input type="text" id="about" onChange={(e) => setAbout(e.target.value)} />
                 <br />
                 <br />
 
                 <label htmlFor="experience">Experience: </label>
+                <br />
                 <input type="text" id="experience" onChange={(e) => setExperience(e.target.value)} />
                 <br />
                 <br />
 
                 <label htmlFor="skills">Skills: </label>
+                <br />
                 <input type="text" id="skills" onChange={(e) => setSkills(e.target.value)} />
                 <br />
                 <br />
 
                 <label htmlFor="education">Education: </label>
+                <br />
                 <input type="text" id="education" onChange={(e) => setEducation(e.target.value)} />
                 <br />
                 <br />
 
                 <label htmlFor="contact">Contact:</label>
+                <br />
                 <input type="text" id="contact" onChange={(e) => setContact(e.target.value)} />
             </form>
 
@@ -87,15 +111,11 @@ export default function App() {
                     <div>
                         <h3>Experience</h3>
                         <ul>
+                            {/* <ExperienceList></ExperienceList> */}
                             <li>
-                                <h4>Company 1</h4>
-                                <p>date</p>
-                                <p>role</p>
-                            </li>
-                            <li>
-                                <h4>Company 2</h4>
-                                <p>date</p>
-                                <p>role</p>
+                                <h4>Role</h4>
+                                <p>Company</p>
+                                <p>Dates</p>
                             </li>
                         </ul>
                     </div>
