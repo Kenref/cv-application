@@ -1,27 +1,18 @@
 import { useState } from "react";
 import { Form } from "./Form.jsx";
 
-// const ExperienceList = () => {
-// 	const [experienceItem, setExperienceItem] = useState("<li><h4>Role</h4><p>Company</p><p>Dates</p></li>");
 
-// 	const addExperience = () => {
-// 		setExperienceItem([...experienceItem, ""]);
-// 	};
-
-// 	return (
-// 		<div>
-// 			<button onClick={addExperience}>More space</button>
-// 		</div>
-// 	)
-
-// }
 
 export default function App() {
-	const [pic, setPic] = useState("/src/assets/profile-image.jpg");
+    const [pic, setPic] = useState("/src/assets/profile-image.jpg");
+    
+
 	const [name, setName] = useState("Name")
 	const [title, setTitle] = useState("Title")
-	const [about, setAbout] = useState("Provide some information about yourself")
-	const [experience, setExperience] = useState("Experience")
+    const [about, setAbout] = useState("Provide some information about yourself")
+    const [experience, setExperience] = useState([{company:"", position:"", date:""}])
+    
+
 	const [skills, setSkills] = useState("Skills")
 	const [education, setEducation] = useState("Education")
 	const [contact, setContact] = useState("Contact")
@@ -33,13 +24,12 @@ export default function App() {
 
 	return (
         <div className="main-container">
-            {/* <form action="">
-                <InputField field="name" value={name} onChange={(e) => setName(e.target.value)}></InputField>
 
-                <InputField field="title" value={title} onChange={(e) => setTitle(e.target.value)}></InputField>
-            </form> */}
-
-            <Form name={name} setName={setName} title={title} setTitle={setTitle} about={about} setAbout={setAbout}></Form>
+            <Form
+                name={name} setName={setName}
+                title={title} setTitle={setTitle} about={about} setAbout={setAbout}
+                experience={experience} setExperience={setExperience}
+            />
 
             <div className="resume-display">
                 <div className="left-side">
@@ -73,7 +63,9 @@ export default function App() {
                     <div>
                         <h3>Experience</h3>
                         <ul>
-                            {/* <ExperienceList></ExperienceList> */}
+                            <li>{experience.company}</li>
+                            <li>{experience.position}</li>
+                            <li>{experience.date}</li>
                             <li>
                                 <h4>Role</h4>
                                 <p>Company</p>

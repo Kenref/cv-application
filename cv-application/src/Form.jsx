@@ -1,19 +1,6 @@
+import { useState } from "react";
 
 function SingleInputField({ field, onChange }) {
-
-    return (
-        <>
-            <label htmlFor={field}>{field}: </label>
-            <br />
-            <input type="text" id={field} onChange={onChange} />
-            <br />
-        </>
-    )
-}
-
-function MultipleInputFields() {
-
-
     return (
         <>
             <label htmlFor={field}>{field}: </label>
@@ -24,97 +11,48 @@ function MultipleInputFields() {
     );
 }
 
-export function Form({ name, setName, title, setTitle, about, setAbout }) {
-    
+function ExperienceInputFields({ field1, field2, field3, onChangeCompany, onChangePosition, onChangeDate }) {
+    return (
+        <>
+            <label htmlFor={field1}>{field1}: </label>
+            <br />
+            <input type="text" id={field1} onChange={onChangeCompany} />
+            <br />
+
+            <label htmlFor={field2}>{field2}: </label>
+            <br />
+            <input type="text" id={field2} onChange={onChangePosition} />
+            <br />
+
+            <label htmlFor={field3}>{field3}: </label>
+            <br />
+            <input type="text" id={field3} onChange={onChangeDate} />
+            <br />
+        </>
+    );
+}
+
+export function Form({ name, setName, title, setTitle, about, setAbout, experience, setExperience }) {
     return (
         <form action="">
-            <SingleInputField field="name" value={name} onChange={(e) => setName(e.target.value)}></SingleInputField>
+            <SingleInputField field="name" onChange={(e) => setName(e.target.value)} />
 
-            <SingleInputField field="title" value={title} onChange={(e) => setTitle(e.target.value)}></SingleInputField>
+            <SingleInputField field="title" onChange={(e) => setTitle(e.target.value)} />
 
-            <SingleInputField field="about" value={about} onChange={(e) => setAbout(e.target.value)}></SingleInputField>
+            <SingleInputField field="about" onChange={(e) => setAbout(e.target.value)} />
 
+            <ExperienceInputFields
+                field1="company"
+                onChangeCompany={(e) => setExperience({ ...experience, company: e.target.value })}
+                field2="position"
+                onChangePosition={(e) => setExperience({ ...experience, position: e.target.value })}
+                field3="date"
+                onChangeDate={(e) => setExperience({ ...experience, date: e.target.value })}
+            />
 
-
-
+            <button type="button" onClick={ExperienceInputFields}>
+                Add Experience
+            </button>
         </form>
     );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export default function Form() {
-
-
-
-
-//     return (
-
-//             <form action="" id="form">
-//                 <label htmlFor="profile-image">Profile Image: </label>
-//                 <br />
-//                 <input type="file" id="profile-image" onChange={(e) => setPic(e.target.value)} />
-//                 <br />
-//                 <br />
-
-//                 <label htmlFor="name">Name: </label>
-//                 <br />
-//                 <input type="text" id="name" onChange={(e) => setName(e.target.value)} />
-//                 <br />
-
-//                 <label htmlFor="title">Title: </label>
-//                 <br />
-//                 <input type="text" id="title" onChange={(e) => setTitle(e.target.value)} />
-//                 <br />
-
-//                 <label htmlFor="about">About: </label>
-//                 <br />
-//                 <input type="text" id="about" onChange={(e) => setAbout(e.target.value)} />
-//                 <br />
-//                 <br />
-
-//                 <label htmlFor="experience">Experience: </label>
-//                 <br />
-//                 <input type="text" id="experience" onChange={(e) => setExperience(e.target.value)} />
-//                 <br />
-//                 <br />
-
-//                 <label htmlFor="skills">Skills: </label>
-//                 <br />
-//                 <input type="text" id="skills" onChange={(e) => setSkills(e.target.value)} />
-//                 <br />
-//                 <br />
-
-//                 <label htmlFor="education">Education: </label>
-//                 <br />
-//                 <input type="text" id="education" onChange={(e) => setEducation(e.target.value)} />
-//                 <br />
-//                 <br />
-
-//                 <label htmlFor="contact">Contact:</label>
-//                 <br />
-//                 <input type="text" id="contact" onChange={(e) => setContact(e.target.value)} />
-//             </form>
-//     )
-// }
-
-
-
-
-
-
