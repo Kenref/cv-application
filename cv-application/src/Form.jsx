@@ -14,6 +14,7 @@ function SingleInputField({ field, onChange }) {
 function ExperienceInputFields({ handleExperienceChange }) {
     return (
         <>
+            <br />
             <label htmlFor="company">Company: </label>
             <br />
             <input type="text" id="company" onChange={(e) => handleExperienceChange("company", e.target.value)} />
@@ -32,18 +33,27 @@ function ExperienceInputFields({ handleExperienceChange }) {
     );
 }
 
-export function Form({ setName, setTitle, setAbout, experience, setExperience }) {
 
+export function Form({ setName, setTitle, setAbout, experience, setExperience, skills, setSkills }) {
     const addExperience = () => {
         setExperience([...experience, { company: "Experience", position: "Position", date: "Date" }]);
     };
 
     const handleExperienceChange = (index, fieldName, value) => {
-        const newExperience = [...experience]
-        newExperience[index][fieldName] = value
-        setExperience(newExperience)
+        const newExperience = [...experience];
+        newExperience[index][fieldName] = value;
+        setExperience(newExperience);
+    };
+
+    const addSkill = () => {
+        setSkills([...skills, ""])
     }
 
+    const handleSkillChange = (index, value) => {
+        const newSkills = [...skills]
+        newSkills[index] = value
+        setSkills(newSkills)
+    }
 
     return (
         <form action="">
@@ -53,19 +63,28 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience })
 
             <SingleInputField field="about" onChange={(e) => setAbout(e.target.value)} />
 
-            {
-                experience.map((exp, index) => (
-                    <ExperienceInputFields
-                        key={index}
-                        experience={exp}
-                        handleExperienceChange={(fieldname, value) => handleExperienceChange(index, fieldname,value)}
-                    />
-                ))
-            }
-
+            <br />
             <button type="button" onClick={addExperience}>
                 Add Experience
             </button>
+            <br />
+            {experience.map((exp, index) => (
+                <ExperienceInputFields
+                    key={index}
+                    experience={exp}
+                    handleExperienceChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
+                />
+            ))}
+
+            <br />
+            <button type="button" onClick={addSkill}>
+                Add Skill
+            </button>
+            <br />
+            <br />
+            {skills.map((skill, index) => (
+                    <SingleInputField key={index} field={`skill ${index + 1}`} onChange={(e) => handleSkillChange(index, e.target.value)} />
+            ))}
         </form>
     );
 }

@@ -10,9 +10,9 @@ export default function App() {
 	const [name, setName] = useState("Name")
 	const [title, setTitle] = useState("Title")
     const [about, setAbout] = useState("Provide some information about yourself")
-
     const [experience, setExperience] = useState([{ company: "Company", position: "Position", date: "Date" }])
 
+    const [skills, setSkills] = useState([])
 
 	return (
         <div className="main-container">
@@ -20,7 +20,7 @@ export default function App() {
             <Form
                 name={name} setName={setName}
                 title={title} setTitle={setTitle} about={about} setAbout={setAbout}
-                experience={experience} setExperience={setExperience}
+                experience={experience} setExperience={setExperience} skills={skills} setSkills={setSkills}
             />
 
             <div className="resume-display">
@@ -33,9 +33,11 @@ export default function App() {
                     <div>
                         <h3>Skills</h3>
                         <ul>
-                            <li>programming</li>
-                            <li>designing</li>
-                            <li>writing</li>
+                            {skills.map((skill, index) => (
+                                <div key={index}>
+                                    <li>{skill}</li>
+                                </div>
+                            ))}
                         </ul>
                     </div>
                     <div>
