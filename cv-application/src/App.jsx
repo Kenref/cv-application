@@ -10,17 +10,10 @@ export default function App() {
 	const [name, setName] = useState("Name")
 	const [title, setTitle] = useState("Title")
     const [about, setAbout] = useState("Provide some information about yourself")
-    const [experience, setExperience] = useState([{company:"", position:"", date:""}])
-    
-
-	const [skills, setSkills] = useState("Skills")
-	const [education, setEducation] = useState("Education")
-	const [contact, setContact] = useState("Contact")
-
-
-
-
-
+    const [experience, setExperience] = useState([{ company: "s", position: "d", date: "df" }])
+    experience.forEach((exp => (
+        console.log(exp.company)
+    )))
 
 	return (
         <div className="main-container">
@@ -63,6 +56,15 @@ export default function App() {
                     <div>
                         <h3>Experience</h3>
                         <ul>
+                            {
+                                experience.forEach((index => (
+                                    <>
+                                        <li>{index.company}</li>
+                                        <li>{index.position}</li>
+                                        <li>{index.index}</li>
+                                    </>
+                                )))
+                            }
                             <li>{experience.company}</li>
                             <li>{experience.position}</li>
                             <li>{experience.date}</li>
