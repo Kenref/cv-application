@@ -10,10 +10,9 @@ export default function App() {
 	const [name, setName] = useState("Name")
 	const [title, setTitle] = useState("Title")
     const [about, setAbout] = useState("Provide some information about yourself")
-    const [experience, setExperience] = useState([{ company: "s", position: "d", date: "df" }])
-    experience.forEach((exp => (
-        console.log(exp.company)
-    )))
+
+    const [experience, setExperience] = useState([{ company: "Company", position: "Position", date: "Date" }])
+
 
 	return (
         <div className="main-container">
@@ -57,22 +56,14 @@ export default function App() {
                         <h3>Experience</h3>
                         <ul>
                             {
-                                experience.forEach((index => (
-                                    <>
-                                        <li>{index.company}</li>
-                                        <li>{index.position}</li>
-                                        <li>{index.index}</li>
-                                    </>
-                                )))
+                                experience.map((exp, index) => (
+                                    <div key={index}>
+                                        <li>{exp.company}</li>
+                                        <li>{exp.position}</li>
+                                        <li>{exp.date}</li>
+                                    </div>
+                                ))
                             }
-                            <li>{experience.company}</li>
-                            <li>{experience.position}</li>
-                            <li>{experience.date}</li>
-                            <li>
-                                <h4>Role</h4>
-                                <p>Company</p>
-                                <p>Dates</p>
-                            </li>
                         </ul>
                     </div>
                     <div>

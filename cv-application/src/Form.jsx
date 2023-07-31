@@ -16,31 +16,32 @@ function ExperienceInputFields({ handleExperienceChange }) {
         <>
             <label htmlFor="company">Company: </label>
             <br />
-            <input type="text" id="company" onChange={(e => handleExperienceChange("company", e.target.value))} />
+            <input type="text" id="company" onChange={(e) => handleExperienceChange("company", e.target.value)} />
             <br />
 
             <label htmlFor="position">Position: </label>
             <br />
-            <input type="text" id="position" onChange={(e => handleExperienceChange("position", e.target.value))} />
+            <input type="text" id="position" onChange={(e) => handleExperienceChange("position", e.target.value)} />
             <br />
 
             <label htmlFor="date">Date: </label>
             <br />
-            <input type="text" id="date" onChange={(e => handleExperienceChange("date", e.target.value))} />
+            <input type="text" id="date" onChange={(e) => handleExperienceChange("date", e.target.value)} />
             <br />
         </>
     );
 }
 
-export function Form({ name, setName, title, setTitle, about, setAbout, experience, setExperience }) {
-    const handleExperienceChange = (index, fieldName, value) => {
-        const newExperience = [...experience]
-        newExperience[index[fieldName]] = value
-        setExperience(newExperience)
-    }
+export function Form({ setName, setTitle, setAbout, experience, setExperience }) {
 
     const addExperience = () => {
-        setExperience([...experience, {company: "", position: "", date: ""}])
+        setExperience([...experience, { company: "Experience", position: "Position", date: "Date" }]);
+    };
+
+    const handleExperienceChange = (index, fieldName, value) => {
+        const newExperience = [...experience]
+        newExperience[index][fieldName] = value
+        setExperience(newExperience)
     }
 
 
@@ -51,15 +52,6 @@ export function Form({ name, setName, title, setTitle, about, setAbout, experien
             <SingleInputField field="title" onChange={(e) => setTitle(e.target.value)} />
 
             <SingleInputField field="about" onChange={(e) => setAbout(e.target.value)} />
-
-            {/* <ExperienceInputFields
-                field1="company"
-                onChangeCompany={(e) => setExperience({ ...experience, company: e.target.value })}
-                field2="position"
-                onChangePosition={(e) => setExperience({ ...experience, position: e.target.value })}
-                field3="date"
-                onChangeDate={(e) => setExperience({ ...experience, date: e.target.value })}
-            /> */}
 
             {
                 experience.map((exp, index) => (
