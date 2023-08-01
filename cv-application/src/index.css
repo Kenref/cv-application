@@ -4,10 +4,10 @@
     justify-content: space-between;
 }
 
-.resume-display {
+.resume-display, form {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    height: 100vh;
 }
 
 .left-side, .right-side {
@@ -20,8 +20,4 @@
     width: 100px;
     border-radius: 30px;
     
-}
-
-.form {
-    border: solid red 2px;
 }

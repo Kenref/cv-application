@@ -1,11 +1,12 @@
 import { useState } from "react";
 
 function SingleInputField({ field, onChange }) {
+    const id = field.replace(/\s/g, "-");
     return (
         <>
-            <label htmlFor={field}>{field}: </label>
+            <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}: </label>
             <br />
-            <input type="text" id={field} onChange={onChange} />
+            <input type="text" id={id} onChange={onChange} />
             <br />
         </>
     );
@@ -74,48 +75,17 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
     }
 
     return (
-        <form action="">
+        <form action="" id="form">
 
             <div className="left-side form">
-                
-            </div>
-
-            <div className="right-side form">
-
-                
-            </div>
-
-            <input
+                <input
                 type="file"
                 accept="image/*"
                 onChange={handlePictureUpload} />
             <br />
-            <br />
-
-            <SingleInputField field="name" onChange={(e) => setName(e.target.value)} />
-
-            <SingleInputField field="title" onChange={(e) => setTitle(e.target.value)} />
-
+                <br />
+                
             <SingleInputField field="about" onChange={(e) => setAbout(e.target.value)} />
-
-            <br />
-            <button type="button" onClick={addExperience}>
-                Add Experience
-            </button>
-            <br />
-            {experience.map((exp, index) => (
-                <TripleInputField
-                    key={index}
-                    field1="company"
-                    field2="position"
-                    field3="date"
-                    display1="Company"
-                    display2="Position"
-                    display3="Date"
-                    handleChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
-                />
-            ))}
-
             <br />
             <button type="button" onClick={addSkill}>
                 Add Skill
@@ -129,27 +99,69 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
                     onChange={(e) => handleSkillChange(index, e.target.value)}
                 />
             ))}
+                
+            <SingleInputField field="phone number" onChange={(e) => setPhoneNumber(e.target.value)} />
+            <SingleInputField field="email" onChange={(e) => setEmail(e.target.value)} />
+            <SingleInputField field="linkedIn" onChange={(e) => setLinkedIn(e.target.value)} />
 
-            <button type="button" onClick={addEducation}>
-                Add Education
-            </button>
 
-            {education.map((edu, index) => (
-                <TripleInputField
-                    key={index}
-                    field1="institution"
-                    field2="areaOfStudy"
-                    field3="date"
-                    display1="Institution"
-                    display2="Area of study"
-                    display3="Date"
-                    handleChange={(fieldname, value) => handleEducationChange(index, fieldname, value)}
-                />
-            ))}
+            </div>
 
-            <SingleInputField field="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} />
-            <SingleInputField field="Email" onChange={(e) => setEmail(e.target.value)} />
-            <SingleInputField field="LinkedIn" onChange={(e) => setLinkedIn(e.target.value)} />
+            <div className="right-side form">
+                <SingleInputField field="name" onChange={(e) => setName(e.target.value)} />
+
+                <SingleInputField field="title" onChange={(e) => setTitle(e.target.value)} />
+                <br />
+                <button type="button" onClick={addExperience}>
+                    Add Experience
+                </button>
+                <br />
+                {experience.map((exp, index) => (
+                    <TripleInputField
+                        key={index}
+                        field1="company"
+                        field2="position"
+                        field3="date"
+                        display1="Company"
+                        display2="Position"
+                        display3="Date"
+                        handleChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
+                    />
+                ))}
+                <button type="button" onClick={addEducation}>
+                    Add Education
+                </button>
+                {education.map((edu, index) => (
+                    <TripleInputField
+                        key={index}
+                        field1="institution"
+                        field2="areaOfStudy"
+                        field3="date"
+                        display1="Institution"
+                        display2="Area of study"
+                        display3="Date"
+                        handleChange={(fieldname, value) => handleEducationChange(index, fieldname, value)}
+                    />
+                ))}
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </form>
     );
 }
