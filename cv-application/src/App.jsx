@@ -5,12 +5,14 @@ import { Form } from "./Form.jsx";
 
 export default function App() {
     const [picture, setPicture] = useState("/src/assets/profile-image.jpg");
-	const [name, setName] = useState("Name")
-	const [title, setTitle] = useState("Title")
-    const [about, setAbout] = useState("Provide some information about yourself")
-    const [experience, setExperience] = useState([{ company: "Company", position: "Position", date: "Date" }])
-    const [skills, setSkills] = useState([])
-    const [education, setEducation] = useState([{institution: "Institution", areaOfStudy: "Area of Study", date: "Date"}])
+	const [name, setName] = useState("John Smith")
+	const [title, setTitle] = useState("Developer")
+    const [about, setAbout] = useState(
+        "I am the best developer in the world. Consequat qui cillum ipsum qui quis ullamco amet officia aute nisi sit dolor laborum proident minim.",
+    );
+    const [experience, setExperience] = useState([{ company: "Best company", position: "CEO", date: "Everyday" }])
+    const [skills, setSkills] = useState(["Coding", "Web design"])
+    const [education, setEducation] = useState([{institution: "Harvard", areaOfStudy: "Computer Science", date: "Every day"}])
     const [phoneNumber, setPhoneNumber] = useState("Phone Number")
     const [email, setEmail] = useState("Email")
     const [linkedIn, setLinkedIn] = useState("LinkedIn")
