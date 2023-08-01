@@ -4,23 +4,42 @@ import { Form } from "./Form.jsx";
 
 
 export default function App() {
-    const [pic, setPic] = useState("/src/assets/profile-image.jpg");
+    const [picture, setPicture] = useState(null);
     
 
 	const [name, setName] = useState("Name")
 	const [title, setTitle] = useState("Title")
     const [about, setAbout] = useState("Provide some information about yourself")
     const [experience, setExperience] = useState([{ company: "Company", position: "Position", date: "Date" }])
-
     const [skills, setSkills] = useState([])
+    const [education, setEducation] = useState([{institution: "Institution", areaOfStudy: "Area of Study", date: "Date"}])
+
+    const [phoneNumber, setPhoneNumber] = useState("Phone Number")
+    const [email, setEmail] = useState("Email")
+    const [linkedIn, setLinkedIn] = useState("LinkedIn")
 
 	return (
         <div className="main-container">
 
             <Form
-                name={name} setName={setName}
-                title={title} setTitle={setTitle} about={about} setAbout={setAbout}
-                experience={experience} setExperience={setExperience} skills={skills} setSkills={setSkills}
+                name={name}
+                setName={setName}
+                title={title}
+                setTitle={setTitle}
+                about={about}
+                setAbout={setAbout}
+                experience={experience}
+                setExperience={setExperience}
+                skills={skills}
+                setSkills={setSkills}
+                education={education}
+                setEducation={setEducation}
+                phoneNumber={phoneNumber}
+                setPhoneNumber={setPhoneNumber}
+                email={setEmail}
+                setEmail={setEmail}
+                linkedIn={linkedIn}
+                setLinkedIn={setLinkedIn}
             />
 
             <div className="resume-display">
@@ -43,9 +62,9 @@ export default function App() {
                     <div>
                         <h3>Contact</h3>
                         <ul>
-                            <li>Phone Number</li>
-                            <li>Email</li>
-                            <li>linkedIn</li>
+                            <li>{phoneNumber}</li>
+                            <li>{email}</li>
+                            <li>{linkedIn}</li>
                         </ul>
                     </div>
                 </div>
@@ -71,8 +90,13 @@ export default function App() {
                     <div>
                         <h3>Education</h3>
                         <ul>
-                            <li>universtity</li>
-                            <li>high school</li>
+                            {education.map((edu, index) => (
+                                <div key={index}>
+                                    <li>{edu.institution}</li>
+                                    <li>{edu.areaOfStudy}</li>
+                                    <li>{edu.date}</li>
+                                </div>
+                            ))}
                         </ul>
                     </div>
                 </div>

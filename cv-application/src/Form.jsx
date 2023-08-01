@@ -11,30 +11,36 @@ function SingleInputField({ field, onChange }) {
     );
 }
 
-function ExperienceInputFields({ handleExperienceChange }) {
+function TripleInputField({ handleChange, field1, field2, field3, display1, display2, display3 }) {
+    // displays are the labels that are shown on screen
     return (
         <>
             <br />
-            <label htmlFor="company">Company: </label>
+            <label htmlFor={field1}>{display1}: </label>
             <br />
-            <input type="text" id="company" onChange={(e) => handleExperienceChange("company", e.target.value)} />
-            <br />
-
-            <label htmlFor="position">Position: </label>
-            <br />
-            <input type="text" id="position" onChange={(e) => handleExperienceChange("position", e.target.value)} />
+            <input type="text" id={field1} onChange={(e) => handleChange(field1, e.target.value)} />
             <br />
 
-            <label htmlFor="date">Date: </label>
+            <label htmlFor={field2}>{display2}: </label>
             <br />
-            <input type="text" id="date" onChange={(e) => handleExperienceChange("date", e.target.value)} />
+            <input type="text" id={field2} onChange={(e) => handleChange(field2, e.target.value)} />
+            <br />
+
+            <label htmlFor={field3}>{display3}: </label>
+            <br />
+            <input type="text" id={field3} onChange={(e) => handleChange(field3, e.target.value)} />
             <br />
         </>
     );
 }
 
 
-export function Form({ setName, setTitle, setAbout, experience, setExperience, skills, setSkills }) {
+export function Form({ setName, setTitle, setAbout, experience, setExperience, skills, setSkills, education, setEducation, phoneNumber, setPhoneNumber, email, setEmail, linkedIn, setLinkedIn }) {
+    
+    const handlePictureUpload = (e) => {
+        const file = e.target.files[0]
+    }
+
     const addExperience = () => {
         setExperience([...experience, { company: "Experience", position: "Position", date: "Date" }]);
     };
@@ -55,8 +61,21 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
         setSkills(newSkills)
     }
 
+    const addEducation = () => {
+        setEducation([...education, {institution: "", areaOfStudy: "", date: ""}])
+    }
+
+    const handleEducationChange = (index, fieldName, value) => {
+        const newEducation = [...education]
+        newEducation[index][fieldName] = value
+        setEducation(newEducation)
+    }
+
     return (
         <form action="">
+
+
+
             <SingleInputField field="name" onChange={(e) => setName(e.target.value)} />
 
             <SingleInputField field="title" onChange={(e) => setTitle(e.target.value)} />
@@ -69,10 +88,15 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
             </button>
             <br />
             {experience.map((exp, index) => (
-                <ExperienceInputFields
+                <TripleInputField
                     key={index}
-                    experience={exp}
-                    handleExperienceChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
+                    field1="company"
+                    field2="position"
+                    field3="date"
+                    display1="Company"
+                    display2="Position"
+                    display3="Date"
+                    handleChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
                 />
             ))}
 
@@ -83,8 +107,33 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
             <br />
             <br />
             {skills.map((skill, index) => (
-                    <SingleInputField key={index} field={`skill ${index + 1}`} onChange={(e) => handleSkillChange(index, e.target.value)} />
+                <SingleInputField
+                    key={index}
+                    field={`skill ${index + 1}`}
+                    onChange={(e) => handleSkillChange(index, e.target.value)}
+                />
             ))}
+
+            <button type="button" onClick={addEducation}>
+                Add Education
+            </button>
+
+            {education.map((edu, index) => (
+                <TripleInputField
+                    key={index}
+                    field1="institution"
+                    field2="areaOfStudy"
+                    field3="date"
+                    display1="Institution"
+                    display2="Area of study"
+                    display3="Date"
+                    handleChange={(fieldname, value) => handleEducationChange(index, fieldname, value)}
+                />
+            ))}
+
+            <SingleInputField field="Phone Number" onChange={(e) => setPhoneNumber(e.target.value)} />
+            <SingleInputField field="Email" onChange={(e) => setEmail(e.target.value)} />
+            <SingleInputField field="LinkedIn" onChange={(e) => setLinkedIn(e.target.value)} />
         </form>
     );
 }
