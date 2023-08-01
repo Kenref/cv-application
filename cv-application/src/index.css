@@ -21,3 +21,7 @@
     border-radius: 30px;
     
 }
+
+.form {
+    border: solid red 2px;
+}

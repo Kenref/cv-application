@@ -4,16 +4,13 @@ import { Form } from "./Form.jsx";
 
 
 export default function App() {
-    const [picture, setPicture] = useState(null);
-    
-
+    const [picture, setPicture] = useState("/src/assets/profile-image.jpg");
 	const [name, setName] = useState("Name")
 	const [title, setTitle] = useState("Title")
     const [about, setAbout] = useState("Provide some information about yourself")
     const [experience, setExperience] = useState([{ company: "Company", position: "Position", date: "Date" }])
     const [skills, setSkills] = useState([])
     const [education, setEducation] = useState([{institution: "Institution", areaOfStudy: "Area of Study", date: "Date"}])
-
     const [phoneNumber, setPhoneNumber] = useState("Phone Number")
     const [email, setEmail] = useState("Email")
     const [linkedIn, setLinkedIn] = useState("LinkedIn")
@@ -40,11 +37,12 @@ export default function App() {
                 setEmail={setEmail}
                 linkedIn={linkedIn}
                 setLinkedIn={setLinkedIn}
+                setPicture={setPicture}
             />
 
             <div className="resume-display">
-                <div className="left-side">
-                    <img src={pic} alt="profile image" id="image" />
+                <div className="left-side display">
+                    <img src={picture} alt="profile image" id="image" />
                     <div>
                         <h3>About Me</h3>
                         <p>{about}</p>
@@ -68,7 +66,7 @@ export default function App() {
                         </ul>
                     </div>
                 </div>
-                <div className="right-side">
+                <div className="right-side display">
                     <div>
                         <h1>{name}</h1>
                         <h3>{title}</h3>

@@ -35,10 +35,12 @@ function TripleInputField({ handleChange, field1, field2, field3, display1, disp
 }
 
 
-export function Form({ setName, setTitle, setAbout, experience, setExperience, skills, setSkills, education, setEducation, phoneNumber, setPhoneNumber, email, setEmail, linkedIn, setLinkedIn }) {
+export function Form({ setName, setTitle, setAbout, experience, setExperience, skills, setSkills, education, setEducation, setPhoneNumber, setEmail, setLinkedIn, setPicture }) {
     
     const handlePictureUpload = (e) => {
         const file = e.target.files[0]
+        const imageURL = URL.createObjectURL(file)
+        setPicture(imageURL)
     }
 
     const addExperience = () => {
@@ -74,7 +76,21 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
     return (
         <form action="">
 
+            <div className="left-side form">
+                
+            </div>
 
+            <div className="right-side form">
+
+                
+            </div>
+
+            <input
+                type="file"
+                accept="image/*"
+                onChange={handlePictureUpload} />
+            <br />
+            <br />
 
             <SingleInputField field="name" onChange={(e) => setName(e.target.value)} />
 
