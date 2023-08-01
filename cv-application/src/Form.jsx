@@ -12,37 +12,52 @@ function SingleInputField({ field, onChange }) {
     );
 }
 
-function TripleInputField({ handleChange, field1, field2, field3, display1, display2, display3 }) {
+function TripleInputField({ handleChange, field1, field2, field3 }) {
+    const id1 = field1.replace(/\s/g, "-");
+    const id2 = field2.replace(/\s/g, "-");
+    const id3 = field3.replace(/\s/g, "-");
     // displays are the labels that are shown on screen
     return (
         <>
             <br />
-            <label htmlFor={field1}>{display1}: </label>
+            <label htmlFor={field1}>{field1.charAt(0).toUpperCase() + field1.slice(1)}: </label>
             <br />
-            <input type="text" id={field1} onChange={(e) => handleChange(field1, e.target.value)} />
-            <br />
-
-            <label htmlFor={field2}>{display2}: </label>
-            <br />
-            <input type="text" id={field2} onChange={(e) => handleChange(field2, e.target.value)} />
+            <input type="text" id={id1} onChange={(e) => handleChange(field1, e.target.value)} />
             <br />
 
-            <label htmlFor={field3}>{display3}: </label>
+            <label htmlFor={field2}>{field2.charAt(0).toUpperCase() + field2.slice(1)}: </label>
             <br />
-            <input type="text" id={field3} onChange={(e) => handleChange(field3, e.target.value)} />
+            <input type="text" id={id2} onChange={(e) => handleChange(field2, e.target.value)} />
+            <br />
+
+            <label htmlFor={field3}>{field3.charAt(0).toUpperCase() + field3.slice(1)}: </label>
+            <br />
+            <input type="text" id={id3} onChange={(e) => handleChange(field3, e.target.value)} />
             <br />
         </>
     );
 }
 
-
-export function Form({ setName, setTitle, setAbout, experience, setExperience, skills, setSkills, education, setEducation, setPhoneNumber, setEmail, setLinkedIn, setPicture }) {
-    
+export function Form({
+    setName,
+    setTitle,
+    setAbout,
+    experience,
+    setExperience,
+    skills,
+    setSkills,
+    education,
+    setEducation,
+    setPhoneNumber,
+    setEmail,
+    setLinkedIn,
+    setPicture,
+}) {
     const handlePictureUpload = (e) => {
-        const file = e.target.files[0]
-        const imageURL = URL.createObjectURL(file)
-        setPicture(imageURL)
-    }
+        const file = e.target.files[0];
+        const imageURL = URL.createObjectURL(file);
+        setPicture(imageURL);
+    };
 
     const addExperience = () => {
         setExperience([...experience, { company: "Experience", position: "Position", date: "Date" }]);
@@ -55,56 +70,51 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
     };
 
     const addSkill = () => {
-        setSkills([...skills, ""])
-    }
+        setSkills([...skills, ""]);
+    };
 
     const handleSkillChange = (index, value) => {
-        const newSkills = [...skills]
-        newSkills[index] = value
-        setSkills(newSkills)
-    }
+        const newSkills = [...skills];
+        newSkills[index] = value;
+        setSkills(newSkills);
+    };
 
     const addEducation = () => {
-        setEducation([...education, {institution: "", areaOfStudy: "", date: ""}])
-    }
+        setEducation([...education, { institution: "", areaOfStudy: "", date: "" }]);
+    };
 
     const handleEducationChange = (index, fieldName, value) => {
-        const newEducation = [...education]
-        newEducation[index][fieldName] = value
-        setEducation(newEducation)
-    }
+        const newEducation = [...education];
+        newEducation[index][fieldName] = value;
+        setEducation(newEducation);
+    };
 
     return (
         <form action="" id="form">
-
             <div className="left-side form">
-                <input
-                type="file"
-                accept="image/*"
-                onChange={handlePictureUpload} />
-            <br />
+                <label htmlFor="profile-picture">Profile Picture</label>
+                <input id="profile-picture" type="file" accept="image/*" onChange={handlePictureUpload} />
                 <br />
-                
-            <SingleInputField field="about" onChange={(e) => setAbout(e.target.value)} />
-            <br />
-            <button type="button" onClick={addSkill}>
-                Add Skill
-            </button>
-            <br />
-            <br />
-            {skills.map((skill, index) => (
-                <SingleInputField
-                    key={index}
-                    field={`skill ${index + 1}`}
-                    onChange={(e) => handleSkillChange(index, e.target.value)}
-                />
-            ))}
-                
-            <SingleInputField field="phone number" onChange={(e) => setPhoneNumber(e.target.value)} />
-            <SingleInputField field="email" onChange={(e) => setEmail(e.target.value)} />
-            <SingleInputField field="linkedIn" onChange={(e) => setLinkedIn(e.target.value)} />
+                <br />
 
+                <SingleInputField field="about" onChange={(e) => setAbout(e.target.value)} />
+                <br />
+                <button type="button" onClick={addSkill}>
+                    Add Skill
+                </button>
+                <br />
+                <br />
+                {skills.map((skill, index) => (
+                    <SingleInputField
+                        key={index}
+                        field={`skill ${index + 1}`}
+                        onChange={(e) => handleSkillChange(index, e.target.value)}
+                    />
+                ))}
 
+                <SingleInputField field="phone number" onChange={(e) => setPhoneNumber(e.target.value)} />
+                <SingleInputField field="email" onChange={(e) => setEmail(e.target.value)} />
+                <SingleInputField field="linkedIn" onChange={(e) => setLinkedIn(e.target.value)} />
             </div>
 
             <div className="right-side form">
@@ -122,9 +132,6 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
                         field1="company"
                         field2="position"
                         field3="date"
-                        display1="Company"
-                        display2="Position"
-                        display3="Date"
                         handleChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
                     />
                 ))}
@@ -135,33 +142,12 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
                     <TripleInputField
                         key={index}
                         field1="institution"
-                        field2="areaOfStudy"
+                        field2="area of study"
                         field3="date"
-                        display1="Institution"
-                        display2="Area of study"
-                        display3="Date"
                         handleChange={(fieldname, value) => handleEducationChange(index, fieldname, value)}
                     />
                 ))}
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </form>
     );
 }
