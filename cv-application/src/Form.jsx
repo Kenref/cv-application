@@ -82,7 +82,7 @@ export function Form({ setName, setTitle, setAbout, experience, setExperience, s
             </button>
             <br />
             <br />
-            {skills.map((skill, index) => (
+            {skills.map((index) => (
                     <SingleInputField key={index} field={`skill ${index + 1}`} onChange={(e) => handleSkillChange(index, e.target.value)} />
             ))}
         </form>
