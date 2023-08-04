@@ -89,9 +89,15 @@ export function Form({
         setEducation(newEducation);
     };
 
+        function formatFieldName(fieldName) {
+            return fieldName.split(" ").join("");
+        }
+
     return (
-        <form action="" id="form-container">
-            <h1 id="header">Create Your resume</h1>
+        <form action="" id="form-container" style={{ marginTop: "50px" }}>
+            <h1 id="header" style={{ paddingBottom: "50px" }}>
+                Create Your resume
+            </h1>
             <label htmlFor="profile-picture">Profile Picture</label>
             <input id="profile-picture" type="file" accept="image/*" onChange={handlePictureUpload} />
             <SingleInputField field="name" onChange={(e) => setName(e.target.value)} />
@@ -112,16 +118,16 @@ export function Form({
                     handleChange={(fieldname, value) => handleExperienceChange(index, fieldname, value)}
                 />
             ))}
-                        <button type="button" onClick={addEducation}>
+            <button type="button" onClick={addEducation}>
                 Add Education
             </button>
             {education.map((edu, index) => (
                 <TripleInputField
                     key={index}
                     field1="institution"
-                    field2="area of study"
+                    field2="area Of Study"
                     field3="date"
-                    handleChange={(fieldname, value) => handleEducationChange(index, fieldname, value)}
+                    handleChange={(fieldname, value) => handleEducationChange(index, formatFieldName(fieldname), value)}
                 />
             ))}
             <button type="button" onClick={addSkill}>
