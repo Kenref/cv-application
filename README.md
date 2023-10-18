@@ -1,8 +1,23 @@
-# React + Vite
+<h1> Memory card game </h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>About</h2>
+<ul>
+    <li>This project is a CV maker with real time data updates made using React</li>
+    <li>Ability to add additional fields</li>
+</ul>
+<br>
+<h2>Languages:</h2>
+<img src="https://skillicons.dev/icons?i=html,css,js,react,vite" alt="HTML, CSS, JS, react, and vite icons">
 
-Currently, two official plugins are available:
+<br>
+<h2>Challenges</h2>
+<ul>
+    <li>Learning how to use React and states for the first time.</li>
+    <li>Making use of prop drilling</li>
+</ul>
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>Screenshot:</h2>
+
+![Screenshot 2023-10-18 at 6 39 16 pm](https://github.com/Kenref/cv-application/assets/107287396/8bce23f7-4256-46c9-8aec-df63bc2b1b8d)
+
+
