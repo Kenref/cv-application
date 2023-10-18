@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form } from "./Form.jsx";
 
 export default function App() {
-	const [picture, setPicture] = useState("/src/assets/profile-image2.jpg");
+	const [picture, setPicture] = useState("src/assets/profile-image2.jpg");
 	const [name, setName] = useState("John Smith");
 	const [title, setTitle] = useState("Developer");
 	const [about, setAbout] = useState(
