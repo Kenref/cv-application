@@ -1,8 +1,9 @@
 <h1> Memory card game </h1>
-
+https://kenneth-cv-app.netlify.app/
 <h2>About</h2>
 <ul>
     <li>This project is a CV maker with real time data updates made using React</li>
+    <li>Made utilising prop drilling and states</li>
     <li>Ability to add additional fields</li>
 </ul>
 <br>
