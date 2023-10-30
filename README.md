@@ -1,4 +1,4 @@
-<h1> Memory card game </h1>
+<h1> CV Application </h1>
 https://kenneth-cv-app.netlify.app/
 <h2>About</h2>
 <ul>
